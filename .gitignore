@@ -24,7 +24,6 @@ pnpm-debug.log*
 .idea/
 
 .vscode/
-pnpm-lock.yaml
 yarn.lock
 package-lock.json
 .sass-cache/

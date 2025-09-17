@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Dylan- Portafolio"
+  description="Bienvenido a mi portafolio Desarrollo, claridad formal y sistemas."
+>
+  <section class="grid gap-6">
+    <h1>Desarrollo con claridad formal y diseño sistémico</h1>
+    <p>Portafolio centrado en precisión técnica, plantillas reutilizables y diseño modular.</p>
+    <div class="flex gap-3">
+      <a
+        href="/projects"
+        class="inline-flex items-center rounded-lg bg-accent px-4 py-2 text-black font-semibold hover:bg-accent-dark"
+        >Ver Proyectos</a
+      >
+      <a
+        href="/about"
+        class="inline-flex items-center rounded-lg border border-slate-600 px-4 py-2 hover:border-accent hover:text-accent"
+        >Sobre mí</a
+      >
+    </div>
+  </section>
+</BaseLayout>

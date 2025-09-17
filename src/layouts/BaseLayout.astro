@@ -1,0 +1,46 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+}
+
+const {
+  title = 'Dylan-Portafolio',
+  description = 'Bienvenido a mi portafolio',
+  image,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/styles/global.css" />
+  </head>
+  <body class="min-h-screen antialiased font-[Inter]">
+    <header class="max-w-5xl mx-auto px-6 py-6 flex items-center justify-between">
+      <a href="/" class="text-xl font-semibold tracking-tight">Dylan</a>
+      <nav class="flex gap-6 text-sm text-[var(--color-muted)]">
+        <a href="/projects" class="hover:text-[var(--color-accent)]">Proyectos</a>
+        <a href="/about" class="hover:text-[var(--color-accent)]">Sobre mí</a>
+        <a href="/contact" class="hover:text-[var(--color-accent)]">Contacto</a>
+      </nav>
+    </header>
+    <main class="max-w-5xl mx-auto px-6 py-10">
+      <slot />
+    </main>
+    <footer class="max-w-5xl mx-auto px-6 py-10 text-sm text-[var(--muted)]">
+      &copy; {new Date().getFullYear()} Dylan Zeballos. Todos los derechos reservados.
+    </footer>
+  </body>
+</html>

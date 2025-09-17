@@ -1,4 +1,6 @@
 ---
+import '../styles/global.css';
+
 interface Props {
   title?: string;
   description?: string;
@@ -25,21 +27,20 @@ const {
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/src/styles/global.css" />
   </head>
   <body class="min-h-screen antialiased font-[Inter]">
     <header class="max-w-5xl mx-auto px-6 py-6 flex items-center justify-between">
       <a href="/" class="text-xl font-semibold tracking-tight">Dylan</a>
-      <nav class="flex gap-6 text-sm text-[var(--color-muted)]">
-        <a href="/projects" class="hover:text-[var(--color-accent)]">Proyectos</a>
-        <a href="/about" class="hover:text-[var(--color-accent)]">Sobre mí</a>
-        <a href="/contact" class="hover:text-[var(--color-accent)]">Contacto</a>
+      <nav class="flex gap-6 text-sm text-muted">
+        <a href="/projects" class="hover:text-accent">Proyectos</a>
+        <a href="/about" class="hover:text-accent">Sobre mí</a>
+        <a href="/contact" class="hover:text-accent">Contacto</a>
       </nav>
     </header>
     <main class="max-w-5xl mx-auto px-6 py-10">
       <slot />
     </main>
-    <footer class="max-w-5xl mx-auto px-6 py-10 text-sm text-[var(--muted)]">
+    <footer class="max-w-5xl mx-auto px-6 py-10 text-sm text-muted">
       &copy; {new Date().getFullYear()} Dylan Zeballos. Todos los derechos reservados.
     </footer>
   </body>

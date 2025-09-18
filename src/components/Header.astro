@@ -1,0 +1,90 @@
+---
+import ThemeToggle from "./ThemeToggle.astro"
+
+const navItems = [
+  { title: "Experiencia", label: "experiencia", url: "/#experiencia" },
+  { title: "Proyectos", label: "proyectos", url: "/#proyectos" },
+  { title: "Sobre mí", label: "sobre-mi", url: "/#sobre-mi" },
+  { title: "Contacto", label: "contacto", url: "mailto:zeballosperedodylanamin@gmail.com" },
+]
+---
+
+<header class="fixed top-0 z-10 flex w-full justify-center mt-2 transition-all duration-300">
+  <nav
+    id="main-nav"
+    class="flex px-3 text-sm font-medium rounded-full text-gray-600 dark:text-gray-200 justify-center items-center transition-all duration-300"
+  >
+    {
+      navItems.map((link) => (
+        <a
+          class="relative block px-2 py-2 transition hover:text-blue-500 dark:hover:text-blue-500"
+          aria-label={link.label}
+          href={link.url}
+        >
+          {link.title}
+        </a>
+      ))
+    }
+    <ThemeToggle />
+  </nav>
+</header>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const nav = document.getElementById("main-nav");
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll("header nav a");
+
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 100) {
+        nav.classList.add(
+          "bg-white/50",
+          "dark:bg-gray-800/90",
+          "shadow-lg",
+          "ring-1",
+          "ring-white/10",
+          "backdrop-blur"
+        );
+      } else {
+        nav.classList.remove(
+          "bg-white/50",
+          "dark:bg-gray-800/90",
+          "shadow-lg",
+          "ring-1",
+          "ring-white/10",
+          "backdrop-blur"
+        );
+      }
+    });
+
+    const callback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          navLinks.forEach((item) => {
+            if (item.getAttribute("aria-label") === entry.target.id) {
+              item.classList.add("text-blue-500");
+            } else {
+              item.classList.remove("text-blue-500");
+            }
+          });
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(callback, {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.3,
+    });
+
+    sections.forEach((section) => observer.observe(section));
+
+    document.onvisibilitychange = () => {
+      if (document.visibilityState === "hidden") {
+        observer.disconnect();
+      } else {
+        sections.forEach((section) => observer.observe(section));
+      }
+    };
+  });
+</script>

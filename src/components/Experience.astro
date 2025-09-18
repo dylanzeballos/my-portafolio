@@ -1,0 +1,29 @@
+---
+import ExperienceItem from "./ExperienceItem.astro"
+const EXPERIENCE = [
+  {
+    date: "Actualmente...",
+    title: "Estudiante de Ingeniería de Sistemas",
+    company: "Universidad Mayor de San Simón",
+    description:
+      "Estoy culminando la carrera de Ingenieria de Sistemas. Desarrollando mi Proyecto de Grado de Ferias Itinerantes de la ciudad de Cochabamba con tecnologias como React, Node.js, Express y MongoDB."
+  },
+  {
+    date: "Septiembre 2025",
+    title: "Backend Developer",
+    company: "SoftCraft SRL",
+    description:
+      "Responsable de la construcción de la logica de negocio y arquitectura del sistema con SprintBoot y Node.js. Implementación de APIs RESTful. Gestión de bases de datos SQL, optimizando consultas y asegurando la integridad de los datos."
+  },
+]
+---
+
+<ol class="relative mt-16">
+  {
+    EXPERIENCE.map((experience) => (
+      <li class="">
+        <ExperienceItem {...experience} />
+      </li>
+    ))
+  }
+</ol>
